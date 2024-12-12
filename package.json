@@ -1,7 +1,7 @@
 {
   "name": "utils",
   "version": "1.0.0",
-  "description": "Utility functions",
+  "description": "Reusable code and utilities",
   "author": "Doni",
   "scripts": {},
   "prettier": {
