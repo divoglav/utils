@@ -34,3 +34,36 @@ export const linkProgram = (gl: WebGL2RenderingContext, vertexShader: WebGLShade
 
   return program;
 };
+
+export const linkTransformFeedbackProgram = (
+  gl: WebGL2RenderingContext,
+  vertexShader: WebGLShader,
+  fragmentShader: WebGLShader | null,
+  varyings: string[],
+  bufferMode: "separate" | "interleaved",
+) => {
+  const program = gl.createProgram();
+  if (!program) throw new Error("Unable to create program");
+
+  gl.attachShader(program, vertexShader);
+  if (fragmentShader) gl.attachShader(program, fragmentShader);
+
+  gl.transformFeedbackVaryings(
+    program,
+    varyings,
+    bufferMode === "separate" ? gl.SEPARATE_ATTRIBS : gl.INTERLEAVED_ATTRIBS,
+  );
+
+  gl.linkProgram(program);
+
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    const info = gl.getProgramInfoLog(program);
+    gl.deleteProgram(program);
+    throw new Error("Program failed to link: " + info);
+  }
+
+  // Optional. Default pixel alignment.
+  gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+
+  return program;
+};
