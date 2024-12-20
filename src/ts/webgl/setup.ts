@@ -1,4 +1,4 @@
-export const compileShader = (gl: WebGL2RenderingContext, type: "vertex" | "fragment", source: string) => {
+const compileShader = (gl: WebGL2RenderingContext, type: "vertex" | "fragment", source: string) => {
   const shaderType = type === "vertex" ? gl.VERTEX_SHADER : gl.FRAGMENT_SHADER;
   const shader = gl.createShader(shaderType);
   if (!shader) throw new Error("Unable to create shader");
@@ -15,7 +15,7 @@ export const compileShader = (gl: WebGL2RenderingContext, type: "vertex" | "frag
   return shader;
 };
 
-export const linkProgram = (gl: WebGL2RenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) => {
+const linkProgram = (gl: WebGL2RenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) => {
   const program = gl.createProgram();
   if (!program) throw new Error("Unable to create program");
 
@@ -36,7 +36,7 @@ export const linkProgram = (gl: WebGL2RenderingContext, vertexShader: WebGLShade
   return program;
 };
 
-export const linkTransformFeedbackProgram = (
+const linkTransformFeedbackProgram = (
   gl: WebGL2RenderingContext,
   vertexShader: WebGLShader,
   fragmentShader: WebGLShader | null,
@@ -68,3 +68,5 @@ export const linkTransformFeedbackProgram = (
 
   return program;
 };
+
+export default { compileShader, linkProgram, linkTransformFeedbackProgram };

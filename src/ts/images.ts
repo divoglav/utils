@@ -1,11 +1,11 @@
-export const loadImage = (source: string, onLoad: () => void) => {
+const loadImage = (source: string, onLoad: () => void) => {
   const image = new Image();
   image.src = source;
   image.onload = onLoad;
   return image;
 };
 
-export const loadImages = (sources: string[], target: HTMLImageElement[], onAllLoaded: () => void) => {
+const loadImages = (sources: string[], target: HTMLImageElement[], onAllLoaded: () => void) => {
   let toLoadCount = sources.length;
 
   const onImageLoaded = () => {
@@ -18,3 +18,5 @@ export const loadImages = (sources: string[], target: HTMLImageElement[], onAllL
     target.push(image);
   }
 };
+
+export default { loadImage, loadImages };

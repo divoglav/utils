@@ -1,4 +1,4 @@
-export const measureTime = (func: () => void, label: string): number => {
+const measureTime = (func: () => void, label: string): number => {
   const start = performance.now();
   func();
   const end = performance.now();
@@ -8,6 +8,8 @@ export const measureTime = (func: () => void, label: string): number => {
   return elapsed;
 };
 
-export const loop = (func: () => any, count: number) => {
+const loop = (func: () => any, count: number) => {
   for (let i = 0; i < count; i++) func();
 };
+
+export default { measureTime, loop };
