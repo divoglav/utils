@@ -1,5 +1,6 @@
-export const compileShader = (gl: WebGL2RenderingContext, type: GLenum, source: string) => {
-  const shader = gl.createShader(type);
+export const compileShader = (gl: WebGL2RenderingContext, type: "vertex" | "fragment", source: string) => {
+  const shaderType = type === "vertex" ? gl.VERTEX_SHADER : gl.FRAGMENT_SHADER;
+  const shader = gl.createShader(shaderType);
   if (!shader) throw new Error("Unable to create shader");
 
   gl.shaderSource(shader, source);
@@ -8,7 +9,7 @@ export const compileShader = (gl: WebGL2RenderingContext, type: GLenum, source: 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
     const info = gl.getShaderInfoLog(shader);
     gl.deleteShader(shader);
-    throw new Error("Could not compile shader: " + info);
+    throw new Error(`Could not compile ${type} shader: ` + info);
   }
 
   return shader;
