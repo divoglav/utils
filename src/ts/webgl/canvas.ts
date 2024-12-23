@@ -1,4 +1,4 @@
-export function resizeCanvasToDisplaySize(canvas: HTMLCanvasElement, multiplier?: number): boolean {
+export function resizeToDisplaySize(canvas: HTMLCanvasElement, multiplier?: number): boolean {
   const scale = multiplier || 1;
 
   const width = (canvas.clientWidth * scale) | 0;
