@@ -1,7 +1,11 @@
-const bool = (): boolean => Math.random() >= 0.5;
+export function bool() {
+  return Math.random() >= 0.5;
+}
 
-const range = (min: number, max: number) => min + Math.random() * (max - min);
+export function range(from: number, to: number) {
+  return from + Math.random() * (to - from);
+}
 
-const rangeInt = (from: number, to: number) => Math.floor(range(from, to));
-
-export default { bool, range, rangeInt };
+export function rangeInt(from: number, to: number) {
+  return Math.floor(range(from, to));
+}

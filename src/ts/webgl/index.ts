@@ -1,6 +1,4 @@
-import { default as Canvas } from "./canvas";
-import { default as Kernels } from "./kernels";
-import { default as Points } from "./points";
-import { default as Setup } from "./setup";
-
-export default { Canvas, Kernels, Points, Setup };
+export * as Canvas from "./canvas";
+export * as Kernels from "./kernels";
+export * as Points from "./points";
+export * as Setup from "./setup";

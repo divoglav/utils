@@ -1,9 +1,9 @@
-export { default as WebGL } from "./webgl";
-export { default as Array } from "./array";
-export { default as Async } from "./async";
-export { default as Images } from "./images";
-export { default as Mathematics } from "./mathematics";
-export { default as Performance } from "./performance";
-export { default as Random } from "./random";
-export { default as Text } from "./text";
-export { default as TrigCache } from "./trig-cache";
+export * as WebGL from "./webgl";
+export * as Array from "./array";
+export * as Async from "./async";
+export * as Images from "./images";
+export * as Mathematics from "./mathematics";
+export * as Performance from "./performance";
+export * as Random from "./random";
+export * as Text from "./text";
+export * as TrigCache from "./trig-cache";

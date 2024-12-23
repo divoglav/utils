@@ -361,12 +361,15 @@ const sines: number[] = [
   -0.01745240643728356, // 359
 ];
 
-const normalize = (angle: number): number => {
+function normalize(angle: number): number {
   const mod = angle % 360;
   return mod >= 0 ? mod : mod + 360;
-};
+}
 
-const sin = (angleInteger: number): number => sines[normalize(angleInteger)];
-const cos = (angleInteger: number): number => sin(angleInteger + 90);
+export function sin(angleInteger: number): number {
+  return sines[normalize(angleInteger)];
+}
 
-export default { sin, cos };
+export function cos(angleInteger: number): number {
+  return sin(angleInteger + 90);
+}

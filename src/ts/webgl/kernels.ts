@@ -1,9 +1,9 @@
-const computeKernelWeight = (kernel: number[]) => {
+export function computeKernelWeight(kernel: number[]) {
   const weight = kernel.reduce((prev, curr) => prev + curr);
   return weight <= 0 ? 1 : weight;
-};
+}
 
-const matrices3x3 = {
+export const matrices3x3 = {
   // prettier-ignore
   identity: [
     0, 0, 0,
@@ -53,5 +53,3 @@ const matrices3x3 = {
     -1, 0, 1,
   ],
 };
-
-export default { computeKernelWeight, matrices3x3 };

@@ -1,4 +1,4 @@
-const compileShader = (gl: WebGL2RenderingContext, type: "vertex" | "fragment", source: string) => {
+export function compileShader(gl: WebGL2RenderingContext, type: "vertex" | "fragment", source: string) {
   const shaderType = type === "vertex" ? gl.VERTEX_SHADER : gl.FRAGMENT_SHADER;
   const shader = gl.createShader(shaderType);
   if (!shader) throw new Error("Unable to create shader");
@@ -13,9 +13,9 @@ const compileShader = (gl: WebGL2RenderingContext, type: "vertex" | "fragment", 
   }
 
   return shader;
-};
+}
 
-const linkProgram = (gl: WebGL2RenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) => {
+export function linkProgram(gl: WebGL2RenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) {
   const program = gl.createProgram();
   if (!program) throw new Error("Unable to create program");
 
@@ -34,20 +34,20 @@ const linkProgram = (gl: WebGL2RenderingContext, vertexShader: WebGLShader, frag
   gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
 
   return program;
-};
+}
 
-const linkTransformFeedbackProgram = (
+export function linkTransformFeedbackProgram(
   gl: WebGL2RenderingContext,
   vertexShader: WebGLShader,
-  fragmentShader: WebGLShader | null,
+  fragmentShader: WebGLShader,
   varyings: string[],
   bufferMode: "separate" | "interleaved",
-) => {
+) {
   const program = gl.createProgram();
   if (!program) throw new Error("Unable to create program");
 
   gl.attachShader(program, vertexShader);
-  if (fragmentShader) gl.attachShader(program, fragmentShader);
+  gl.attachShader(program, fragmentShader);
 
   gl.transformFeedbackVaryings(
     program,
@@ -67,6 +67,4 @@ const linkTransformFeedbackProgram = (
   gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
 
   return program;
-};
-
-export default { compileShader, linkProgram, linkTransformFeedbackProgram };
+}

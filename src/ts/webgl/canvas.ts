@@ -1,4 +1,4 @@
-const resizeCanvasToDisplaySize = (canvas: HTMLCanvasElement, multiplier?: number): boolean => {
+export function resizeCanvasToDisplaySize(canvas: HTMLCanvasElement, multiplier?: number): boolean {
   const scale = multiplier || 1;
 
   const width = (canvas.clientWidth * scale) | 0;
@@ -12,11 +12,4 @@ const resizeCanvasToDisplaySize = (canvas: HTMLCanvasElement, multiplier?: numbe
   }
 
   return needsResize;
-};
-
-const clear = (gl: WebGL2RenderingContext, alpha: number = 0) => {
-  gl.clearColor(0, 0, 0, alpha);
-  gl.clear(gl.COLOR_BUFFER_BIT);
-};
-
-export default { resizeCanvasToDisplaySize, clear };
+}
