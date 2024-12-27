@@ -7,3 +7,4 @@ export * as Random from "./random";
 export * as Text from "./text";
 export * as TrigCache from "./trig-cache";
 export { Vector2 } from "./vector2";
+export { Vector3 } from "./vector3";
